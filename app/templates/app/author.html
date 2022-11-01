@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title%} Blog | {{post.author.first_name}} {% endblock title%}
 {% block content %}
 <div class="container">
   <div class="layout">
@@ -44,7 +45,7 @@
                       <img src="{{post.author.profile.profile_image.url}}" alt="" />
                     </div>
                     <div class="details">
-                      <p>Author name</p>
+                      <p>{{post.author.first_name}}</p>
                       <small>{{post.last_updated|date}}</small>
                     </div>
                   </div>

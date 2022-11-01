@@ -2,7 +2,7 @@ from turtle import title
 from django.shortcuts import render
 from django.urls import reverse
 from app.forms import CommentForm, SubscribeForm
-from app.models import Comments, Post, Tag, Profile
+from app.models import Comments, Post, Tag, Profile, WebsiteMeta
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.db.models import Count
@@ -16,6 +16,10 @@ def index(request):
     subscribe_form = SubscribeForm()
     subscribe_succsesful = None
     featured_post = Post.objects.filter(is_featured = True)
+    website_info = None
+
+    if WebsiteMeta.objects.all().exists():
+        website_info = WebsiteMeta.objects.all()[0]
 
     if featured_post:
          featured_post = featured_post[0]
@@ -26,7 +30,6 @@ def index(request):
             subscribe_form.save()
             subscribe_succsesful = 'Subscribed Succsesfully'
             subscribe_form = SubscribeForm()
-            return HttpResponseRedirect('/')
 
     context = {
         'posts': posts,
@@ -34,7 +37,8 @@ def index(request):
         'recent_posts': recent_posts,
         'subscribe_form': subscribe_form,
         'subscribe_succsesful': subscribe_succsesful,
-         'featured_post': featured_post,
+        'featured_post': featured_post,
+        'website_info': website_info
 
     }  
     return render(request, 'app/index.html', context)
@@ -93,4 +97,29 @@ def search_posts(request):
         search_query = request.GET.get('q')
     posts = Post.objects.filter(title__icontains=search_query)  
     context = {'posts': posts, 'search_query': search_query}
-    return render (request, 'app/search.html', context)    
+    return render (request, 'app/search.html', context)
+
+def about_page(request):
+    subscribe_form = SubscribeForm()
+    subscribe_succsesful = None
+    website_info = None
+
+    if WebsiteMeta.objects.all().exists():
+        website_info = WebsiteMeta.objects.all()[0]
+
+    if request.method =='POST':
+        subscribe_form = SubscribeForm(request.POST)
+        if subscribe_form.is_valid():
+            subscribe_form.save()
+            subscribe_succsesful = 'Subscribed Succsesfully'
+            subscribe_form = SubscribeForm()
+
+    context = {
+        'subscribe_form': subscribe_form, 
+        'subscribe_succsesful': subscribe_succsesful,
+        'website_info': website_info
+        }
+    return render(request, 'app/about.html', context)
+
+def all_posts(request):
+    return render(request, 'app/allposts.html')

@@ -1,4 +1,6 @@
+import configparser
 from email.policy import default
+from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
@@ -58,4 +60,9 @@ class Comments(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     parent = models.ForeignKey('self', on_delete=models.DO_NOTHING, null=True, blank=True, related_name='replies')
+
+class WebsiteMeta(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=200)
+    about = models.TextField()
 
