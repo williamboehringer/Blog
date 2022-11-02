@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% block title%}Blog | {{post.title}}{% endblock title %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="layout">
+    <!-- left layout -->
+    <div class="left">
+      <div class="page-top">
+        <div class="top flex">
+          <div class="page-name">
+            <a href="#" class="learn">
+              <span class="material-icons"> keyboard_return </span> Go
+              back
+            </a>
+            <h1>Post Create</h1>
+          </div>
+        </div>
+      </div>
+      <center>
+        <div class="typo">
+          <h1 class="title blog-title">
+            {{post.title}}
+          </h1>
+        </div>
+      </center>
+      <section class="mt">
+        <div class="container">
+          <!-- blog post -->
+          <div class="inputs">
+            <div>
+              <h4>Post Title</h4>
+              {{form.title}}
+              </div>
+            </div>
+      <div class="inputs">
+        <div>
+          <h4>Post Content</h4>
+          {{form.content}}
+          </div>
+        </div>
+      <div class="inputs">
+        <div>
+          <h4>Post Image</h4>
+          {{form.image}}
+          </div>
+        </div>  
+      <div class="inputs">
+        <div>
+          <h4>Post Image</h4>
+          {{form.tags}}
+          </div>
+      </div>
+      <div class="inputs">
+        <div>
+          <h4>Post Image</h4>
+          {{form.author}}
+          </div>
+      </div>
+          <div class="comment-box">
+            <h3>Leave a new comment to this post</h3>
+            <p>
+              Your email address will not be published. Required fields
+              are marked<span>*</span>
+            </p>
+            <form method="POST">
+              <input type="hidden" name ="post_id" value="{{post.id}}">
+              {% csrf_token %}
+              {{form.content}}
+              <div class="grid-3">
+                {{form.name}}
+                {{form.email}}
+                {{form.website}}
+              </div>
+              <button class="btn btn-primary rounded">
+                Post comment
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- left layout end -->
+
+    <!-- right layout -->
+    <div class="right">
+      <div class="block">
+        <h2 class="title2">Most recent</h2>
+        {% for post in recent_posts %}
+        <div class="recent-post">
+          <div class="rounded-img">
+            <img src="{{post.image.url}}" alt="" />
+          </div>
+          <div class="recent-content">
+            <h3>
+              {{post.title}}
+            </h3>
+            <a class="learn" href="{% url 'app:post_page' post.slug %}"
+              >Learn more
+              <span class="material-icons"> trending_flat </span></a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="block r-blog">
+        <h2 class="title2">Related Blogs</h2>
+        <!-- card -->
+        <a href="#">
+          <div class="card">
+            <div class="post-img">
+              <img src="../images/post.png" alt="" />
+              <div class="tag">Tag name</div>
+            </div>
+            <div class="card-content">
+              <h3>
+                A blog title and other stuffs will add here, also we can
+                include.
+              </h3>
+              <div class="author">
+                <div class="profile-pic">
+                  <img src="{{post.author.profile.profile_image.url}}" alt="" />
+                </div>
+                <div class="details">
+                  <p>{{post.author.first_name}}</p>
+                  <small>{{post.last_updated|date}}</small>
+                </div>
+              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- card end-->
+      </div>
+      <div class="block">
+        <h2 class="title2">Top category</h2>
+        <div class="card">
+          <h3>
+            A blog title and other stuffs will add here, lso we can
+            incluse.
+          </h3>
+          <p>
+            Lorem ipsum began as scrambled, nonsensical Latin derived from
+            Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
+          </p>
+          <a class="learn" href="#"
+            >Learn more
+            <span class="material-icons"> trending_flat </span></a
+          >
+        </div>
+        <div class="card">
+          <h3>
+            A blog title and other stuffs will add here, lso we can
+            incluse.
+          </h3>
+          <p>
+            Lorem ipsum began as scrambled, nonsensical Latin derived from
+            Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
+          </p>
+          <a class="learn" href="#"
+            >Learn more
+            <span class="material-icons"> trending_flat </span></a
+          >
+        </div>
+        <div class="card">
+          <h3>
+            A blog title and other stuffs will add here, lso we can
+            incluse.
+          </h3>
+          <p>
+            Lorem ipsum began as scrambled, nonsensical Latin derived from
+            Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
+          </p>
+          <a class="learn" href="#"
+            >Learn more
+            <span class="material-icons"> trending_flat </span></a
+          >
+        </div>
+      </div>
+      <div class="block">
+        <h2 class="title2">Top Tags</h2>
+        <div class="blog-tags">
+          <div class="tag">Tag</div>
+          <div class="tag">Tag content</div>
+          <div class="tag">Tag</div>
+          <div class="tag">Tag content</div>
+          <div class="tag">Tag content</div>
+          <div class="tag">Tag</div>
+          <div class="tag">Tag content</div>
+          <div class="tag">Tag content</div>
+          <div class="tag">Tag</div>
+          <div class="tag">Tag content</div>
+          <div class="tag">Tag</div>
+        </div>
+      </div>
+    </div>
+    <!-- right layout end -->
+  </div>
+</div>
+
+{% endblock content %}      
+

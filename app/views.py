@@ -1,11 +1,12 @@
 from turtle import title
 from django.shortcuts import render
 from django.urls import reverse
-from app.forms import CommentForm, SubscribeForm
+from app.forms import CommentForm, PostForm, SubscribeForm
 from app.models import Comments, Post, Tag, Profile, WebsiteMeta
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.db.models import Count
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -122,4 +123,10 @@ def about_page(request):
     return render(request, 'app/about.html', context)
 
 def all_posts(request):
-    return render(request, 'app/allposts.html')
+    posts = Post.objects.all()[0:9]
+    return render(request, 'app/allposts.html', {'posts': posts})
+
+@login_required(login_url='accounts:login')
+def create_post(request):
+    context = {'form': PostForm()}
+    return render(request, 'app/teste.html', context)

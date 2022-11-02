@@ -1064,3 +1064,26 @@ main {
 .reply button {
   background: transparent;
 }
+
+input#id_title {
+  border-radius: 1rem;
+  height: 5rem;
+  border: 1px solid var(--black);
+  padding: 0 2rem;
+}
+
+textarea#id_content {
+  border-radius: 1rem;
+  height: 10rem;
+  border: 1px solid var(--black);
+  padding: 0 2rem;
+  position: center;
+}
+
+input#id_image {
+  padding: 0 2rem;
+}
+
+div.inputs {
+  text-align:center
+}
