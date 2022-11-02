@@ -2,63 +2,55 @@
 {% block title%}Blog | Signup {% endblock title %}
 
 {% block content %}
-      <div class="container">
-        <div class="page-name">
-          <a href="#" class="learn">
-            <span class="material-icons"> keyboard_return </span> Go back
-          </a>
-          <h1>Sign Up</h1>
+  <div class="container">
+    <div class="page-name">
+      <a href="#" class="learn">
+        <span class="material-icons"> keyboard_return </span> Go back
+      </a>
+      <h1>Sign Up</h1>
+    </div>
+    <form method="post" class="form">
+      {% csrf_token%}
+      <center>
+        <div class="logo f-logo">
+          <i class="fa-brands fa-blogger"></i>
         </div>
-        <form method="post" class="form">
-          {% csrf_token%}
+        <div class="inputs">
+            <div class="search-bar s-active input">
+              {{form.username}}
+              <div class="animated-search">
+                <i class="uil uil-user"></i>
+              </div>
+            </div>
+          <div>
+            <div class="search-bar s-active input">
+              {{form.password1}}
+              <div class="animated-search">
+                <i class="uil uil-key-skeleton"></i>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="search-bar s-active input">
+              {{form.password2}}
+              <div class="animated-search">
+                <i class="uil uil-key-skeleton"></i>
+              </div>
+            </div>
+          </div>
+          {% if request.method == 'POST' and not form.password1.is_valid or form.password2.is_valid %}
+          <div class="field-error">
+            <p>Signup unsuccsesful. Please try again</p>
+          </div>
+          {% endif %}
+          <button class="btn btn-primary rounded"  type="submit">
+            SIGN UP <span class="material-icons"> arrow_right_alt </span>
+          </button>
           <center>
-            <div class="logo f-logo">
-              <i class="fa-brands fa-blogger"></i>
-            </div>
-            <div class="inputs">
-              <div>
-                <div class="search-bar s-active input">
-                  {{form.username}}
-                  <div class="animated-search">
-                    <i class="uil uil-user"></i>
-                  </div>
-                </div>
-              <div>
-                <div class="search-bar s-active input">
-                  <div class="animated-search">
-                    <i class="uil uil-envelope-alt"></i>
-                  </div>
-                </div>
-              <div>
-                <div class="search-bar s-active input">
-                  {{form.password1}}
-                  <div class="animated-search">
-                    <i class="uil uil-key-skeleton"></i>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="search-bar s-active input">
-                  <{{form.password2}}
-                  <div class="animated-search">
-                    <i class="uil uil-key-skeleton"></i>
-                  </div>
-                </div>
-              </div>
-              {% if request.method == 'POST' and not form.password1.is_valid or form.password2.is_valid %}
-              <div class="field-error">
-                <p>Signup unsuccsesful. Please try again</p>
-              </div>
-            </div>
-            {% endif %}
-              <button class="btn btn-primary rounded"  type="submit">
-                SIGN UP <span class="material-icons"> arrow_right_alt </span>
-              </button>
-              <center>
-                <p>Already have an account? <a href="{% url 'accounts:login' %}">Login</a></p>
-              </center>
-            </div>
+            <p>Already have an account? <a href="{% url 'accounts:login' %}">Login</a></p>
           </center>
-        </form>
-      </div>
+        </div>
+      </center>
+    </form>
+  </div>
 {% endblock content %}

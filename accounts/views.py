@@ -9,10 +9,10 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-        if 'next' in request.GET:
-            return redirect(request.GET.get('next'))
-        else:    
-            return redirect('app:index')
+            if 'next' in request.GET:
+                return redirect(request.GET.get('next'))
+            else:    
+                return redirect('app:index')
     else:
         form = Authentication()
         return render(request, 'accounts/login.html', {'form': form})

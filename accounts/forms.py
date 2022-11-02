@@ -2,17 +2,14 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 from django import forms
-class Authentication(AuthenticationForm):
 
+class Authentication(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['placeholder'] = 'Type your name'
         self.fields['password'].widget.attrs['placeholder'] = 'Type your password'
 
 class UserCreation(UserCreationForm):
-    error_messages = {
-        'password_mismatch': _("The two password fields didn't match."),
-    }
     password1 = forms.CharField(label=_("Password"),
         widget=forms.PasswordInput)
     password2 = forms.CharField(label=_("Password confirmation"),

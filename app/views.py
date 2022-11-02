@@ -89,7 +89,7 @@ def tag_page(request, slug):
 def author_page(request, slug):
     author = Profile.objects.get(slug=slug)
     top_posts = Post.objects.all().filter(author=author.id).order_by('-view_count')[0:2]
-    top_authors = User.objects.all().annotate(number=Count('post')).order_by('-number')[0:3]
+    top_authors = User.objects.all().annotate(number=Count('post')).filter(number__gt=0).order_by('-number')[0:3]
     return render(request, 'app/author.html', {'author': author, 'top_posts': top_posts, 'top_authors': top_authors})  
 
 def search_posts(request):
