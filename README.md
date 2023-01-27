@@ -1,4 +1,4 @@
-# Articles Blog
+# Standard Blog
 <br>
 
 ## 🧪 Technologies used in this project
