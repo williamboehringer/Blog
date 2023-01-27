@@ -61,7 +61,7 @@
     </main>
     <footer>
       <div class="container">
-        <div class="grid-4">
+        <div class="grid-3">
           <div class="logo f-logo">
             <i class="fa-brands fa-blogger"></i>
           </div>
@@ -80,19 +80,6 @@
               <a href="{% url 'accounts:signup' %}">Signup</a>
             </div>
           </div>
-          <div class="news-signup">
-            <h2>Subscribe</h2>
-            <div class="newsletter">
-              {% if subscribe_succsesful %}
-                <br><p>{{subscribe_succsesful}}</p></br>
-              {% else %}
-              <form method="POST">
-                {% csrf_token %}
-                {{subscribe_form}}
-                <button class="btn btn-primary">Subscribe</button>
-              </form>
-              {% endif %}
-            </div>
           </center>
         </div>
           </div>
