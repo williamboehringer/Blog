@@ -15,19 +15,19 @@
 ### Here are some screenshots of the blog:
 
 ### Homepage
-![index-screen](https://user-images.githubusercontent.com/104523477/215143336-98857a04-f703-4061-918b-3d3767323d41.jpg)
+![index-screen](https://user-images.githubusercontent.com/104523477/215147910-441afc3a-dfb8-4432-ba5f-05ec6b5eb408.jpg)
+
 
 ### Posts page
-![posts-page](https://user-images.githubusercontent.com/104523477/215143632-855a287e-0caf-445b-83bf-c7cbc09d89f3.jpg)
+![posts-page](https://user-images.githubusercontent.com/104523477/215147935-3d0ddbfc-9448-4bbb-af4d-639720df5118.jpg)
+
 
 ### Post Detail Page
-![detail page](https://user-images.githubusercontent.com/104523477/215144527-8fb6f406-4d00-49f9-a0e0-8819fcded6d2.jpg)
+![detail page](https://user-images.githubusercontent.com/104523477/215147924-b3d3457c-bca4-4db6-801f-d76a2abca304.jpg)
+
 
 ### Search page
-![search-page](https://user-images.githubusercontent.com/104523477/215145103-ec1a86c2-23f0-4ffb-b9a8-a0d53bd1a555.png)
-
-
-
+![search-page](https://user-images.githubusercontent.com/104523477/215147951-632a8313-8af4-4b7f-a9b6-fdb0710ec01c.png)
 
 <br>
 
