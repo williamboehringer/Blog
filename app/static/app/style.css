@@ -1087,3 +1087,12 @@ input#id_image {
 div.inputs {
   text-align:center
 }
+
+div.create-form{
+  margin: 30px auto;
+}
+select.tags {
+  margin: 30px auto;
+
+  display: block;
+}

@@ -42,5 +42,3 @@ class UserCreation(UserCreationForm):
         self.fields['username'].widget.attrs['placeholder'] = 'Type your name'
         self.fields['password1'].widget.attrs['placeholder'] = 'Type your password'
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm your password'
-
-    

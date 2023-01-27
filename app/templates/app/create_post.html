@@ -2,35 +2,40 @@
 {% block title%}Blog | Welcome{% endblock title %}
 
 
-{% block content %}
+{% block content %}  
+  <div class="container">
+    <div class="page-top">
+      <div class="top flex">
+        <div class="page-name">
+          <a onclick="history.back()" class="learn">
+            <span class="material-icons"> keyboard_return </span> Go back
+          </a>
+          <h1>About</h1>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="inputs">
       <div>
-        <h4>Post Title</h4>
         {{form.title}}
         </div>
       </div>
 <div class="inputs">
   <div>
-    <h4>Post Content</h4>
     {{form.content}}
     </div>
   </div>
 <div class="inputs">
   <div>
-    <h4>Post Image</h4>
     {{form.image}}
     </div>
   </div>  
 <div class="inputs">
-  <div>
-    <h4>Post Image</h4>
-    {{form.tags}}
-    </div>
-</div>
-<div class="inputs">
-  <div>
-    <h4>Post Image</h4>
-    {{form.author}}
+  <select>
+  {% for tag in form.tags %}
+  <option value="{{ tag.id }}">{{ tag }}:</option>
+  {% endfor%}
+  </select>
     </div>
 </div>
 

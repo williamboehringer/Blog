@@ -9,9 +9,8 @@
             <div class="page-top">
               <div class="top flex">
                 <div class="page-name">
-                  <a href="" class="learn">
-                    <span class="material-icons"> keyboard_return </span> Go
-                    back
+                  <a onclick="history.back()" class="learn">
+                    <span class="material-icons"> keyboard_return </span> Go back
                   </a>
                   <h1>Tag</h1>
                 </div>
@@ -30,13 +29,12 @@
               <div class="container">
                 <h1 class="sec-title">Top posts</h1>
                 <div class="grid-2 blog">
-                  {% for post in top_posts %}
+                  {% for post in related_posts %}
                   <!-- card -->
                   <a href="{% url 'app:post_page' post.slug %}" >
                     <div class="card">
                       <div class="post-img">
                         <img src="{{post.image.url}}" alt="" />
-                        <div class="tag">{{post.tag.all.0.name}}</div>
                       </div>
                       <div class="card-content">
                         <h3>
@@ -68,8 +66,7 @@
                   <a href="{% url 'app:post_page' post.slug %}">
                     <div class="card">
                       <div class="post-img">
-                        <img src="{{post.image.url}}" alt="" />
-                        <div class="tag">`{{post.tags.all.0.}}</div>
+                        <img src="{{post.image.url}}" alt="">
                       </div>
                       <div class="card-content">
                         <h3>

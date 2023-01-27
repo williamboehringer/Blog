@@ -1,5 +1,5 @@
 from turtle import title
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from app.forms import CommentForm, PostForm, SubscribeForm
 from app.models import Comments, Post, Tag, Profile, WebsiteMeta
@@ -128,5 +128,14 @@ def all_posts(request):
 
 @login_required(login_url='accounts:login')
 def create_post(request):
-    context = {'form': PostForm()}
-    return render(request, 'app/teste.html', context)
+    if request.method == 'POST':
+        post = PostForm(request.POST, request.FILES)
+        if post.is_valid():
+            instance = post.save(commit=False)
+            instance.author = request.user
+            instance.save()
+            return redirect('app:all_posts')
+
+    else:
+        context = {'form': PostForm()}
+        return render(request, 'app/teste.html', context)

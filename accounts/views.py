@@ -15,7 +15,7 @@ def login_view(request):
                 return redirect('app:index')
     else:
         form = Authentication()
-        return render(request, 'accounts/login.html', {'form': form})
+    return render(request, 'accounts/login.html', {'form': form})
 
 def logout_view(request):
     if request.method == 'POST':

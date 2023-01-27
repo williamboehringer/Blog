@@ -35,7 +35,7 @@
               {{form.password2}}
               <div class="animated-search">
                 <i class="uil uil-key-skeleton"></i>
-              </div>
+              </div>              
             </div>
           </div>
           {% if request.method == 'POST' and not form.password1.is_valid or form.password2.is_valid %}

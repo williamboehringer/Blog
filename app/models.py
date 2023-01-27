@@ -42,14 +42,19 @@ class Post(models.Model):
     content = models.TextField()
     last_updated = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=200, unique=True)
-    image = models.ImageField(null=True, blank=True, upload_to="images/")
     tags = models.ManyToManyField(Tag, blank=True, related_name='post')
     view_count = models.IntegerField(null=True, blank=True)
     is_featured = models.BooleanField(default=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to="images/")
 
     def __str__(self) -> str:
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+        return super(Post, self).save(*args, **kwargs)
 
 class Comments(models.Model):
     content = models.TextField()

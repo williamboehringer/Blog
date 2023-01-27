@@ -1,5 +1,5 @@
 from django import forms
-from app.models import Comments, Post, Subscribe
+from app.models import Comments, Post, Subscribe, Profile
 from django.utils.translation import gettext_lazy as _
 
 class CommentForm(forms.ModelForm):
@@ -25,6 +25,17 @@ class SubscribeForm(forms.ModelForm):
         self.fields['email'].widget.attrs['placeholder'] = 'Enter your Email'
 
 class PostForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['content'].widget.attrs['placeholder'] = 'Type your content'
+        self.fields['title'].widget.attrs['placeholder'] = 'Type your title'
+        
     class Meta:
         model = Post
-        exclude = ['last_updated' , 'slug', 'view_count', 'is_featured']
+        exclude = ['last_updated' , 'slug', 'view_count', 'is_featured', 'author']
+        
+class ProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = '__all__'
