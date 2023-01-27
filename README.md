@@ -34,9 +34,9 @@
 # 🚀 How to run?
 
 ### * Install Python3, wich you can download trough the link https://www.python.org/downloads/.
-<<<<<<< HEAD
+
 ### * Install in an python venv the dependencies needed for the project that are listed in the 'requirements.txt' file.
-=======
+
 ### * Install in a python venv the dependencies needed for the project that are listed in the 'requirements.txt' file.
 
 ### * With the venv activated, open a terminal where the manage.py file is located and run the command 'python manage.py runserver' and access the page trough the port localhost:8000/.
