@@ -10,7 +10,7 @@
 
  # ❓ What it does?
 
-### It's an in development blog to publish and share articles/posts. It allows you to link tags to your publication and search for related posts. It is also possible to comment and reply to comments in the publications.
+### It's an in development blog to publish and share articles/posts, based in Udemy's course "Python Django 4 Masterclass | Build a Real World Project". It allows you to link tags to your publication and search for related posts. It is also possible to comment and reply to comments in the publications.
 
 ### Here are some screenshots of the blog:
 
@@ -39,4 +39,4 @@
 
 <br>
 
-## Developed by William Boehringer
+Link to the course: https://www.udemy.com/course/python-django-masterclass/
