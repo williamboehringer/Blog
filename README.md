@@ -12,6 +12,8 @@
 
 ### It's an in development blog to publish and share articles/posts, based in Udemy's course "Python Django 4 Masterclass | Build a Real World Project". It allows you to link tags to your publication and search for related posts. It is also possible to comment and reply to comments in the publications.
 
+### Link to the course: https://www.udemy.com/course/python-django-masterclass/
+
 ### Here are some screenshots of the blog:
 
 ### Homepage
@@ -36,7 +38,3 @@
 ### * Install Python3, wich you can download trough the link https://www.python.org/downloads/.
 ### * Install in an python venv the dependencies needed for the project that are listed in the 'requirements.txt' file.
 ### * With the venv activated, open a terminal where the manage.py file is located and run the command 'python manage.py runserver' and access the page trough the port localhost:8000/.
-
-<br>
-
-Link to the course: https://www.udemy.com/course/python-django-masterclass/
